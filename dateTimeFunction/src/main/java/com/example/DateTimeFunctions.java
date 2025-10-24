@@ -1,6 +1,7 @@
 package com.example;
 
 import java.time.*;
+import java.time.format.DateTimeFormatter;
 
 public class DateTimeFunctions {
 
@@ -22,7 +23,12 @@ public class DateTimeFunctions {
 	 */
 	public static LocalDate getTodaysDate() {
 		//YOUR CODE STARTS HERE
-		return null;
+
+        //The today's date
+        LocalDate todayDate = LocalDate.now();
+
+		return todayDate;
+
 		//YOUR CODE ENDS HERE
 
 	}
@@ -33,7 +39,13 @@ public class DateTimeFunctions {
 	 */
 	public static LocalDate getLaterDatebyDays(LocalDate date, int x) {
 		//YOUR CODE STARTS HERE
-		return null;
+
+        //We add x days to today's date
+        LocalDate todayDate = LocalDate.now();
+        LocalDate future = todayDate.plusDays(x);
+
+		return future;
+
 		//YOUR CODE ENDS HERE
 
 	}
@@ -44,7 +56,13 @@ public class DateTimeFunctions {
 	 */
 	public static LocalDate getPreviousDatebyWeeks(LocalDate date, int x) {
 		//YOUR CODE STARTS HERE
-		return null;
+
+        //We subtract x weeks to today's date
+        LocalDate todayDate = LocalDate.now();
+        LocalDate past = todayDate.minusWeeks(x);
+
+		return past;
+
 		//YOUR CODE ENDS HERE
 
 	}
@@ -56,7 +74,32 @@ public class DateTimeFunctions {
 	 */
 	public static String getTimeDifference(LocalDate date1, LocalDate date2) {
 		//YOUR CODE STARTS HERE
-		return null;
+
+        /*
+        Human interpretation instead of machine interpretation.
+        The Period class focuses on years, months, and days
+         */
+        Period diff = date1.until(date2);
+
+        /*
+        A Method from Period that retrieves the number of days, then converted
+        into String. Do exactly the same with months and years.
+         */
+
+        int days = diff.getDays();
+        String daysString = Integer.toString(days);
+
+        int months = diff.getMonths();
+        String monthsString = Integer.toString(months);
+
+        int years = diff.getYears();
+        String yearsString = Integer.toString(years);
+
+        //String format given in the question
+        String formatted = "Years-" + yearsString + ":Months-" + monthsString + ":Days-" + days;
+
+        return formatted;
+
 		//YOUR CODE ENDS HERE
 
 	}
